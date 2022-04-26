@@ -1,3 +1,6 @@
-# tugas_pertemuan5_ramdan
+# Tugas Pertemuan 5 - Pemrograman Mobile
 
-Tugas Pertemuan 5 - Pemgrograman Mobile
+## Data Diri
+* NIM : 30819050
+* Nama : Muhammad Ramdan
+* Tugas : Tugas Pertemuan 5 - Pemrograman Mobile
