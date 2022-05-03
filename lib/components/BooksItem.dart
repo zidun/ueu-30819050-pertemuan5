@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tugas_pertemuan5_ramdan/pages/DetailBooks.dart';
 import 'package:tugas_pertemuan5_ramdan/utils/constants.dart';
+import 'package:tugas_pertemuan5_ramdan/utils/helpers.dart';
 
 class BooksItem extends StatelessWidget {
   final dynamic itemData;
@@ -14,11 +15,17 @@ class BooksItem extends StatelessWidget {
 
     return InkWell(
       onTap: () {
-        print("on tap");
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => DetailBooks(
+              title: itemData['title'],
+              image: itemData['image'],
+              author: itemData['author'],
+              date: itemData['date'],
+              text: itemData['text'],
+            )));
       },
       child: Container(
         width: size.width,
-        padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
@@ -44,6 +51,18 @@ class BooksItem extends StatelessWidget {
                   ),
                 )
             ),
+            Expanded(child:  Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(itemData["title"], style: themeData.textTheme.headline2),
+                spacingV(8),
+                Text("Penulis : "+itemData["author"], style: themeData.textTheme.headline4),
+                spacingV(8),
+                Text("Rilis : "+itemData["date"], style: themeData.textTheme.headline4),
+                spacingV(24),
+              ],
+            ))
           ],
         ),
       ),

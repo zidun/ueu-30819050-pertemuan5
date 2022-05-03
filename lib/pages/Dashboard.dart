@@ -110,21 +110,7 @@ class DashboardPages extends StatelessWidget {
                             ),
                           )
                       ),
-                      spacingV(padding*2),
-                      SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        padding: EdgeInsets.symmetric(horizontal: 12),
-                        physics: BouncingScrollPhysics(),
-                        child: Row(
-                          children: [
-                            "Populer",
-                            "Favorit",
-                            "Terbaru",
-                            "Terlama",
-                          ].map((category) => CategoryItem(category:category, isActive: category == 'Populer',)).toList(),
-                        ),
-                      ),
-                      spacingV(36),
+                      spacingV(padding),
                       Column(
                         children: [
                           Padding(
@@ -133,7 +119,7 @@ class DashboardPages extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Text("Populer", style: themeData.textTheme.headline2),
+                                Text("Lanjut Baca", style: themeData.textTheme.headline2),
                                 RichText(
                                   text:  TextSpan(
                                     style: themeData.textTheme.bodyText1,
@@ -161,6 +147,49 @@ class DashboardPages extends StatelessWidget {
                           ),
                           spacingV(16),
                         ],
+                      ),
+                      SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        padding: EdgeInsets.symmetric(horizontal: 12),
+                        physics: BouncingScrollPhysics(),
+                        child: Row(
+                          children: [
+                            "Populer",
+                            "Favorit",
+                            "Terbaru",
+                            "Terlama",
+                          ].map((category) => CategoryItem(category:category, isActive: category == 'Populer',)).toList(),
+                        ),
+                      ),
+                      spacingV(36),
+                      Padding(
+                        padding: sizePadding,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text("Populer", style: themeData.textTheme.headline2),
+                            RichText(
+                              text:  TextSpan(
+                                style: themeData.textTheme.bodyText1,
+                                text: "Lihat Semua",
+                                recognizer: TapGestureRecognizer()..onTap = () => print("Go To Detail"),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                      Container(
+                        child: ListView.builder(
+                            padding: EdgeInsets.all(24),
+                            shrinkWrap: true,
+                            physics: NeverScrollableScrollPhysics(),
+                            itemCount: BOOKS_DATA.length,
+                            itemBuilder: (context, item) {
+                              return BooksItem(
+                                itemData: BOOKS_DATA[item],
+                              );
+                            }),
                       ),
                     ],
                   ),
